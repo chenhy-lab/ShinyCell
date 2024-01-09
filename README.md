@@ -184,7 +184,7 @@ using hierarchical clustering.
 
 ![](images/quick-shiny5.png)
 
-The seventh tab "Differential expression" allows users to perform gene 
+The eighth tab "Differential expression" allows users to perform gene 
 differential expression analysis grouped by categorical cell information 
 (e.g. library / cluster) or using partial cells (group.1 and group.2).
 
