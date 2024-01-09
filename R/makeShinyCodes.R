@@ -18,6 +18,7 @@
 #' @param defPtSiz specify default point size for single cells. For example, a 
 #'   smaller size can be used if you have many cells in your dataset
 #' @param ganalytics Google analytics tracking ID (e.g. "UA-123456789-0")
+#' @param default.Rlib character vector specifying the libPath of R
 #'
 #' @return server.R and ui.R required for shiny app
 #'
@@ -43,7 +44,7 @@
 makeShinyCodes <- function(shiny.title, shiny.footnotes,
                            shiny.prefix, shiny.dir, 
                            enableSubset = TRUE, defPtSiz = 1.25,
-                           ganalytics = NA){
+                           ganalytics = NA, default.Rlib = NULL){
   subst = "#"
   if(enableSubset){subst = ""}
   defPtSiz = as.character(defPtSiz)
@@ -52,8 +53,8 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for server.R
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr","ggplot2",
-        "ggrepel","hdf5r","ggdendro","gridExtra")), file = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","ggplot2",
+        "ggrepel","hdf5r","ggdendro","gridExtra","presto","dplyr"),libPath = default.Rlib), file = fname)
     readr::write_file(wrSVload(shiny.prefix), append = TRUE, file = fname)
     readr::write_file(wrSVfix(), append = TRUE, file = fname)
     readr::write_file(wrSVmain(shiny.prefix, subst), append = TRUE, file = fname)
@@ -63,7 +64,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for ui.R
     fname = paste0(shiny.dir, "/ui.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr")), file = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr"),libPath = default.Rlib), file = fname)
     readr::write_file(wrUIload(shiny.prefix), append = TRUE, file = fname)
     readr::write_file(wrUIsingle(shiny.title, ganalytics), append = TRUE, file = fname)
     readr::write_file(wrUImain(shiny.prefix, subst, defPtSiz), append = TRUE, file = fname)
@@ -81,8 +82,8 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for server.R
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr","ggplot2",
-        "ggrepel","hdf5r","ggdendro","gridExtra")), path = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","ggplot2",
+        "ggrepel","hdf5r","ggdendro","gridExtra","presto","dplyr"),libPath = default.Rlib), path = fname)
     readr::write_file(wrSVload(shiny.prefix), append = TRUE, path = fname)
     readr::write_file(wrSVfix(), append = TRUE, path = fname)
     readr::write_file(wrSVmain(shiny.prefix, subst), append = TRUE, path = fname)
@@ -92,7 +93,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for ui.R
     fname = paste0(shiny.dir, "/ui.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr")), path = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr"),libPath = default.Rlib), path = fname)
     readr::write_file(wrUIload(shiny.prefix), append = TRUE, path = fname)
     readr::write_file(wrUIsingle(shiny.title, ganalytics), append = TRUE, path = fname)
     readr::write_file(wrUImain(shiny.prefix, subst, defPtSiz), append = TRUE, path = fname)

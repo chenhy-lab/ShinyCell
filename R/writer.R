@@ -5,12 +5,12 @@
 #' @rdname wrLib
 #' @export wrLib
 #'
-wrLib <- function(lib) {
+wrLib <- function(lib,libPath) {
   oup = ""
   for(iLib in lib){
     oup = paste0(oup, "library(", iLib, ") \n")
   }
-  glue::glue(".libPaths(c('/your/R/library'));",paste0(oup, "\n"),.sep = "\n")
+  glue::glue(libPath,paste0(oup, "\n"),.sep = "\n")
 }
 
 #' Write code for loading objects for server.R
@@ -654,7 +654,7 @@ wrSVfix <- function() {
              '  print("Loading expression matrix...") \n',
              '  h5file <- H5File$new(inpH5, mode = "r")  \n',
              '  h5data <- h5file[["grp"]][["data"]]  \n',
-             '  X_matrix <- Matrix::Matrix(h5data$read(args = list(1:length(inpGene), quote(expr=)))) \n',
+             '  X_matrix <- Matrix::Matrix(h5data$read(args = list(quote(expr=), quote(expr=)))) \n',
              '  h5file$close_all() \n',
              '  return(X_matrix) \n',
              '}} \n',

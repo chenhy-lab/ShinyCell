@@ -23,6 +23,7 @@
 #'   value can be specified to set the point size for all datasets. Otherwise,
 #'   users have to specify one value for each dataset
 #' @param ganalytics Google analytics tracking ID (e.g. "UA-123456789-0")
+#' @param default.Rlib character vector specifying the libPath of R
 #'
 #' @return server.R and ui.R required for shiny app
 #'
@@ -50,7 +51,7 @@
 makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
                                 shiny.prefix, shiny.headers, shiny.dir, 
                                 enableSubset = TRUE, defPtSiz = 1.25,
-                                ganalytics = NA){
+                                ganalytics = NA, default.Rlib = NULL){
   ### Checks
   if(length(shiny.prefix) != length(shiny.headers)){
     stop("length of shiny.prefix and shiny.headers does not match!")
@@ -66,8 +67,8 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
     ### Write code for server.R
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr","ggplot2",
-        "ggrepel","hdf5r","ggdendro","gridExtra")), file = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","ggplot2",
+        "ggrepel","hdf5r","ggdendro","gridExtra","presto","dplyr"),libPath=default.Rlib), file = fname)
     for(i in shiny.prefix){
       readr::write_file(wrSVload(i), append = TRUE, file = fname)
     }
@@ -81,7 +82,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
     ### Write code for ui.R
     fname = paste0(shiny.dir, "/ui.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr")), file = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr"),libPath=default.Rlib), file = fname)
     for(i in shiny.prefix){
       readr::write_file(wrUIload(i), append = TRUE, file = fname)
     }
@@ -107,8 +108,8 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
     ### Write code for server.R
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr","ggplot2",
-        "ggrepel","hdf5r","ggdendro","gridExtra")), path = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","ggplot2",
+        "ggrepel","hdf5r","ggdendro","gridExtra","presto","dplyr"),libPath=default.Rlib), path = fname)
     for(i in shiny.prefix){
       readr::write_file(wrSVload(i), append = TRUE, path = fname)
     }
@@ -122,7 +123,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
     ### Write code for ui.R
     fname = paste0(shiny.dir, "/ui.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr")), path = fname)
+      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr"),libPath=default.Rlib), path = fname)
     for(i in shiny.prefix){
       readr::write_file(wrUIload(i), append = TRUE, path = fname)
     }

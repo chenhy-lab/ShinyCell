@@ -44,6 +44,7 @@
 #'   show in bubbleplot / heatmap
 #' @param default.dimred character vector specifying the two default dimension 
 #'   reductions. Default is to use UMAP if not TSNE embeddings
+#' @param default.Rlib character vector specifying the libPath of R
 #'
 #' @return directory containing shiny app
 #'
@@ -77,7 +78,7 @@ makeShinyApp <- function(
   shiny.title = "scRNA-seq shiny app", shiny.footnotes = "",
   shiny.dir = "shinyApp/", enableSubset = TRUE, defPtSiz = 1.25, ganalytics=NA,
   default.gene1 = NA, default.gene2 = NA, default.multigene = NA, 
-  default.dimred = NA){
+  default.dimred = NA,default.Rlib =.libPaths()){
   
   # Checks are performed in respective functions
   # Wrapper for two main functions
@@ -89,7 +90,7 @@ makeShinyApp <- function(
   makeShinyCodes(shiny.title = shiny.title, shiny.footnotes = shiny.footnotes,
                  shiny.prefix = "sc1", shiny.dir = shiny.dir, 
                  enableSubset = enableSubset, defPtSiz = defPtSiz,
-                 ganalytics = ganalytics)
+                 ganalytics = ganalytics,default.Rlib = default.Rlib)
 
 }
 

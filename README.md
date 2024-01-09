@@ -88,7 +88,7 @@ First, users can run the following code to check if the packages required by
 `ShinyCell` exist and install them if required:
 ``` r
 reqPkg = c("data.table", "Matrix", "hdf5r", "reticulate", "ggplot2", 
-           "gridExtra", "glue", "readr", "RColorBrewer", "R.utils", "Seurat")
+           "gridExtra", "glue", "readr", "RColorBrewer", "R.utils", "Seurat", "presto", "dplyr")
 newPkg = reqPkg[!(reqPkg %in% installed.packages()[,"Package"])]
 if(length(newPkg)){install.packages(newPkg)}
 
@@ -101,14 +101,14 @@ the following code to check if the packages required by the Shiny app exist
 and install them if required:
 ``` r
 reqPkg = c("shiny", "shinyhelper", "data.table", "Matrix", "DT", "hdf5r", 
-           "reticulate", "ggplot2", "gridExtra", "magrittr", "ggdendro")
+           "reticulate", "ggplot2", "gridExtra", "ggdendro", "presto", "dplyr")
 newPkg = reqPkg[!(reqPkg %in% installed.packages()[,"Package"])]
 if(length(newPkg)){install.packages(newPkg)}
 ```
 
 `ShinyCell` can then be installed from GitHub as follows:
 ``` r
-devtools::install_github("SGDDNB/ShinyCell")
+devtools::install_github("chenhy-lab/ShinyCell")
 ```
 
 
@@ -184,7 +184,11 @@ using hierarchical clustering.
 
 ![](images/quick-shiny5.png)
 
+The seventh tab "Differential expression" allows users to perform gene 
+differential expression analysis grouped by categorical cell information 
+(e.g. library / cluster) or using partial cells (group.1 and group.2).
 
+![](images/quick-shiny6.png)
 
 # Frequently Asked Questions
 - Q: How much memory / storage space does `ShinyCell` and the Shiny app consume?
