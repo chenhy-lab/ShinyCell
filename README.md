@@ -88,7 +88,7 @@ First, users can run the following code to check if the packages required by
 `ShinyCell` exist and install them if required:
 ``` r
 reqPkg = c("data.table", "Matrix", "hdf5r", "reticulate", "ggplot2", 
-           "gridExtra", "glue", "readr", "RColorBrewer", "R.utils", "Seurat", "presto", "dplyr")
+           "gridExtra", "glue", "readr", "RColorBrewer", "R.utils", "Seurat", "presto", "dplyr","rio")
 newPkg = reqPkg[!(reqPkg %in% installed.packages()[,"Package"])]
 if(length(newPkg)){install.packages(newPkg)}
 
@@ -101,7 +101,7 @@ the following code to check if the packages required by the Shiny app exist
 and install them if required:
 ``` r
 reqPkg = c("shiny", "shinyhelper", "data.table", "Matrix", "DT", "hdf5r", 
-           "reticulate", "ggplot2", "gridExtra", "ggdendro", "presto", "dplyr")
+           "reticulate", "ggplot2", "gridExtra", "ggdendro", "presto", "dplyr","rio")
 newPkg = reqPkg[!(reqPkg %in% installed.packages()[,"Package"])]
 if(length(newPkg)){install.packages(newPkg)}
 ```
