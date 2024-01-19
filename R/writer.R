@@ -486,7 +486,7 @@ wrSVfix <- function() {
              '  ggOut = ggOut + xlab(inp1) + ylab(inp2) + \n',
              '    sctheme(base_size = sList[inpfsz], Xang = 45, XjusH = 1) +  \n',
              '    scale_fill_manual("", values = ggCol) +\n',
-             '    theme(legend.position = "none")\n',
+             '    theme(legend.position = "bottom")\n',
              '  return(ggOut) \n',
              '}} \n',
              ' \n',
