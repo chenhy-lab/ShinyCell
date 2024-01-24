@@ -2162,7 +2162,7 @@ wrUImain <- function(prefix, subst = "", ptsiz = "1.25") {
              '                     content = c("Cell group 2")),   \n',
              '            br(),   \n',
              '            selectInput("top_gene", "Top gene:",   \n',
-             '                        choices = c(50,100,200,300,500,1000),   \n',
+             '                        choices = c(50,100,200,300,500,1000,100000),   \n',
              '                        selected = 100) %>%   \n',
              '              helper(type = "inline", size = "m", fade = TRUE,   \n',
              '                     title = "Top differential expression genes",   \n',
