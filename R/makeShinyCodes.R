@@ -53,7 +53,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for server.R
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","ggplot2",
+      c("shiny","shinyhelper","shinyjqui","data.table","Matrix","DT","ggplot2",
         "ggrepel","hdf5r","ggdendro","gridExtra","presto","dplyr","rio","rstatix","ggpubr"),libPath = default.Rlib), file = fname)
     readr::write_file(wrSVload(shiny.prefix), append = TRUE, file = fname)
     readr::write_file(wrSVfix(), append = TRUE, file = fname)
@@ -64,7 +64,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for ui.R
     fname = paste0(shiny.dir, "/ui.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr"),libPath = default.Rlib), file = fname)
+      c("shiny","shinyhelper","shinyjqui","data.table","Matrix","DT","magrittr"),libPath = default.Rlib), file = fname)
     readr::write_file(wrUIload(shiny.prefix), append = TRUE, file = fname)
     readr::write_file(wrUIsingle(shiny.title, ganalytics), append = TRUE, file = fname)
     readr::write_file(wrUImain(shiny.prefix, subst, defPtSiz), append = TRUE, file = fname)
@@ -82,7 +82,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for server.R
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","ggplot2",
+      c("shiny","shinyhelper","shinyjqui","data.table","Matrix","DT","ggplot2",
         "ggrepel","hdf5r","ggdendro","gridExtra","presto","dplyr","rio","rstatix","ggpubr"),libPath = default.Rlib), path = fname)
     readr::write_file(wrSVload(shiny.prefix), append = TRUE, path = fname)
     readr::write_file(wrSVfix(), append = TRUE, path = fname)
@@ -93,7 +93,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     ### Write code for ui.R
     fname = paste0(shiny.dir, "/ui.R")
     readr::write_file(wrLib(
-      c("shiny","shinyhelper","data.table","Matrix","DT","magrittr"),libPath = default.Rlib), path = fname)
+      c("shiny","shinyhelper","shinyjqui","data.table","Matrix","DT","magrittr"),libPath = default.Rlib), path = fname)
     readr::write_file(wrUIload(shiny.prefix), append = TRUE, path = fname)
     readr::write_file(wrUIsingle(shiny.title, ganalytics), append = TRUE, path = fname)
     readr::write_file(wrUImain(shiny.prefix, subst, defPtSiz), append = TRUE, path = fname)
