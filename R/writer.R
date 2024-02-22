@@ -10,7 +10,7 @@ wrLib <- function(lib,libPath) {
   for(iLib in lib){
     oup = paste0(oup, "library(", iLib, ") \n")
   }
-  glue::glue(libPath,paste0(oup, "\n"),.sep = "\n")
+  glue::glue(sprintf(".libPaths(c(%s))",paste(sprintf("\"%s\"", libPath), collapse=", ")),paste0(oup, "\n"),.sep = "\n")
 }
 
 #' Write code for loading objects for server.R
@@ -2244,8 +2244,8 @@ wrUIend <- function(footnote) {
              '   \n',
              'br(), \n',
              'p({f0}), \n',
-             'p(em("This webpage was made using "), a("ShinyCell", \n', 
-             '  href = "https://github.com/chenhy-lab/ShinyCell",target="_blank")), \n',
+             'p(em("This webpage was made using "), a("ShinyCellX", \n', 
+             '  href = "https://github.com/chenhy-lab/ShinyCellX",target="_blank")), \n',
              'br(),br(),br(),br(),br() \n',
              '))) \n',
              ' \n',

@@ -42,9 +42,10 @@ First, users can run the following code to check if the packages required by
 `ShinyCellX` exist and install them if required:
 ``` r
 reqPkg = c("shinyjqui","data.table", "Matrix", "hdf5r", "reticulate", "ggplot2", 
-           "gridExtra", "glue", "readr", "RColorBrewer", "R.utils", "Seurat", "presto", "dplyr","rio")
+           "gridExtra", "glue", "readr", "RColorBrewer", "R.utils", "Seurat", "dplyr","rio")
 newPkg = reqPkg[!(reqPkg %in% installed.packages()[,"Package"])]
 if(length(newPkg)){install.packages(newPkg)}
+devtools::install_github("immunogenomics/presto")
 
 # If you are using h5ad file as input, run the code below as well
 # reticulate::py_install("anndata")
@@ -55,9 +56,10 @@ the following code to check if the packages required by the Shiny app exist
 and install them if required:
 ``` r
 reqPkg = c("shiny", "shinyhelper", "shinyjqui", "data.table", "Matrix", "DT", "hdf5r", 
-           "reticulate", "ggplot2", "gridExtra", "ggdendro", "presto", "dplyr","rio")
+           "reticulate", "ggplot2", "gridExtra", "ggdendro", "dplyr","rio")
 newPkg = reqPkg[!(reqPkg %in% installed.packages()[,"Package"])]
 if(length(newPkg)){install.packages(newPkg)}
+devtools::install_github("immunogenomics/presto")
 ```
 
 `ShinyCell` can then be installed from GitHub as follows:
@@ -88,6 +90,7 @@ library(ShinyCellX)
 
 getExampleData()                       # Download example dataset (~200 MB)
 seu = readRDS("readySeu_rset.rds")
+seu = UpdateSeuratObject(seu)
 scConf = createConfig(seu)
 makeShinyApp(seu, scConf, gene.mapping = TRUE,
              shiny.title = "ShinyCell Quick Start") 
