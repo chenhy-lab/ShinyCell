@@ -16,7 +16,7 @@ Depends:
     hdf5r        (>= 1.2.0),
     reticulate   (>= 1.13),
     R.utils      (>= 2.8.0),
-    ggplot2      (>= 3.3.0),
+    ggplot2      (>= 3.4.2),
     grid                   ,
     gridExtra    (>= 2.3.0),
     glue         (>= 1.4.2),
@@ -24,7 +24,8 @@ Depends:
     RColorBrewer (>= 1.1-2),
 	presto		 (>= 1.0.0),
 	dplyr		 (>= 1.1.2),
-	rio			 (>= 0.5.0)
+	rio			 (>= 0.5.0),
+	ggh4x		 (>= 0.2.5),
 Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 7.1.1
