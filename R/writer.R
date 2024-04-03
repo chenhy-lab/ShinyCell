@@ -2181,7 +2181,7 @@ wrUImain <- function(prefix, subst = "", ptsiz = "1.25") {
              '                     choices = c("Bubbleplot", "Heatmap", "Violinplot"), \n',
              '                     selected = "Bubbleplot", inline = TRUE), \n',
              '        checkboxInput("{prefix}d1scl", "Scale gene expression", value = TRUE), \n',
-             '        checkboxInput("{prefix}d1row", "Cluster rows (genes)", value = TRUE), \n',
+             '        checkboxInput("{prefix}d1row", "Cluster rows (genes)", value = FALSE), \n',
              '        checkboxInput("{prefix}d1col", "Cluster columns (samples)", value = FALSE), \n',
              '        br(), \n',
              '{subst}        actionButton("{prefix}d1togL", "Toggle to subset cells"), \n',
